@@ -15,6 +15,15 @@ header{
 	height: 20vh;
 	border-bottom: 2px solid white;
 }
+.timer{
+
+	font-family: Raleway;
+	font-size: 1.5rem;
+	color:white;
+	display: grid;
+	justify-items: center;
+	
+}
 header,form{
 
 	display: flex;
@@ -84,9 +93,7 @@ color: white;
 	border-bottom: 1px solid white;
 	transition: all 1s ease;  
 }
-.todo-div.remind{
-	border-bottom: 3px solid green;
-}
+
 .todo-div.done{
 	opacity: 0.5;
 	text-decoration:line-through; 
