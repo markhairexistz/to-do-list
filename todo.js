@@ -1,31 +1,65 @@
 //selector
 const todoInput = document.querySelector('#todoInput');
-const btnAdd = document.querySelector('#btnAdd');
+const formTodo = document.querySelector('#formTodo');
 const todoList = document.querySelector('#todoList');
 const time = document.querySelector('#time');
 
-
 //Event Listener
-btnAdd.addEventListener('click', addTodo);
-
+formTodo.addEventListener('submit', addTodo);
 todoList.addEventListener('click',Target);
 
 //functions
 
+//TYPING EFFECT IN ABOUT ME
+const texts = ["Markhair's TO DO LIST"];
+let count = 0;
+let index = 0;
+let currentText ="";
+let letter = "";
+
+(function type() {
+	
+	currentText = texts[count];
+	letter = currentText.slice(0, ++index);
+	document.querySelector("#header").textContent = letter;
+	
+	
+		setTimeout(type,200);
+})();
+
+//Time
+(function renderTime(){
+	let currentTime = new Date();
+	let hr = currentTime.getHours();
+	let min = currentTime.getMinutes();
+	let sec = currentTime.getSeconds();
+
+	let ampm = '';
+
+	if(hr >= 12){
+		ampm= 'PM';
+	}else{
+		ampm = 'AM';
+	}
+
+	document.querySelector("#clock").innerHTML ='Clock: '+hr+' : '+min+' : '+sec+' : '+ampm;
+	//setTimeout(renderTime,1000)
+		setTimeout(renderTime,500);
+})();
+
+
 
 //ADD LIST
 function addTodo(e){
-
-let setTime = time.value;
-
 e.preventDefault();
+//input time value
+let setTime = time.value;
 //add todo div
 const todoDiv = document.createElement('div');
 todoDiv.classList.add('todo-div');
 //add li
 const newTodo = document.createElement('li');
 newTodo.innerHTML = todoInput.value + " @ "+ setTime;
-const reminder = newTodo.setAttribute('reminder',setTime);
 newTodo.classList.add('todo-item');
 todoDiv.appendChild(newTodo);
 // addcheck button
@@ -46,6 +80,7 @@ todoList.appendChild(todoDiv);
 
 //remove input value
 todoInput.value ="";
+time.value ="";
 
 
 //return reminder;
@@ -73,7 +108,11 @@ if(click.classList[0] === 'delete-btn'){
 //if check-btn is clicked
 
 if(click.classList[0] === 'check-btn'){
-	click.parentElement.classList.add('done');
+	if(click.parentElement.classList.contains('done')){
+		click.parentElement.classList.remove('done');
+	}else{
+		click.parentElement.classList.add('done');	
+	}
 }
 
 }
