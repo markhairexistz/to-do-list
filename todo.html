@@ -12,14 +12,17 @@
 <!--google font-->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" type="text/css" href="todo.css">
-<body>
+<body onload="">
 <header>
-	<h3>Markhair's TO DO LIST APP</h3><br>
+	<h3 id="header"></h3></br>
 </header>
-<form>
-	<input type="text" class="todo-input" id="todoInput" placeholder="todo and remind time(hr:min:am/pm)">
+<div class="timer">
+	<h3 id="clock"></h3>
+</div>
+<form id="formTodo">
+	<input type="text" class="todo-input" id="todoInput" placeholder="todo and remind time(hr:min:am/pm)" required="required">
 	
-	<input type="time" class="time" id="time" value="">
+	<input type="time" class="time" id="time" value="" required="required">
 
 	<button type="submit" class="add-todo" id="btnAdd"><i class="fa fa-sm fa-plus-square"></i></button>
 </form>
